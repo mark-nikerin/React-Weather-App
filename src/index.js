@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './normalize.css';
-import WeatherApp from './WeatherApp';
+import WeatherApp from './components/WeatherApp';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

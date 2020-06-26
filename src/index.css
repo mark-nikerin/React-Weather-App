@@ -2,7 +2,9 @@ body {
   margin: 0;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; 
+  background-image: url("./assets/bg1.jpg"); 
+  background-size: 100%;
 } 
 
 .search {
