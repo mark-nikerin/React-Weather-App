@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import './normalize.css';
+import WeatherApp from './components/WeatherApp';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WeatherApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
