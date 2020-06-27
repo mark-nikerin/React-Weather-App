@@ -3,10 +3,15 @@ import Search from './Search/Search';
 import '../index.css'
 
 function WeatherApp() {
+
+  const [location, setLocation] = React.useState('');
+
   return (
     <div>
-      <h1 className='search-title'>Weather Forecast</h1>
-      <Search className='search'/> 
+      <div className='main-search'>
+        <h1 className='search-title'>Weather Forecast</h1>
+        <Search className='search'/> 
+      </div>
     </div>
   );
 }
