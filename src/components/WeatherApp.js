@@ -5,7 +5,7 @@ import "../index.css";
 function WeatherApp() {
   const [location, setLocation] = React.useState({ LocationKey:'', LocationName:'' });
 
-  function searchAutocomplete(location) {
+  function searchLocation(location) {
     console.log(location);
     fetch(
       "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE&q=" +
@@ -33,12 +33,12 @@ function WeatherApp() {
       {!location.LocationKey && (
         <div className="main-search">
           <h1 className="search-title">Weather Forecast</h1>
-          <Search className="search" onSearch={searchAutocomplete} />
+          <Search className="search" onSearch={searchLocation} />
         </div>
       )}
       {location.LocationKey && (
         <div className="main-forecast">
-          <Search className="search" onSearch={searchAutocomplete} location={location.LocationName}/>
+          <Search className="search" onSearch={searchLocation} location={location.LocationName}/>
         </div>
       )}
     </div>
