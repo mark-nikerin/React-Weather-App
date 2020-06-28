@@ -12,10 +12,10 @@ function WeatherApp() {
 
   const [currentInfo, setCurrentInfo] = React.useState();
 
-  function getLocationInfo(query) {
+  function getLocationInfo(locationQuery) {
     fetch(
       "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE&q=" +
-        query +
+        locationQuery +
         "&language=en-US"
     )
       .then((response) => response.json())
@@ -56,9 +56,7 @@ function WeatherApp() {
           };
           return condition;
         });
-
-        console.log("CurrentInfo");
-        console.log(result[0]);
+ 
         setCurrentInfo(result[0]);
       });
   }
