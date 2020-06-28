@@ -12,20 +12,3 @@ body {
   background-size: 100%;
 }  
 
-.main-search {
-  margin-top: -120px;
-}
-
-.main-forecast {
-  margin-top: -380px;
-}
-
-.search-title {
-  text-align: center;
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 48px;
-  line-height: 59px;  
-  color: #4F4F4F;
-}

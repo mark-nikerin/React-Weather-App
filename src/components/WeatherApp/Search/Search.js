@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../Search/search.css";
-import icons from "../../assets/icons.svg";
+import "./search.css";
+import icons from "../../../assets/icons.svg";
 
 function useInputValue(defaultValue = "") {
   const [value, setValue] = React.useState(defaultValue);

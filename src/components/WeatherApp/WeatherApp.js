@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Search from "./Search/Search";
-import Info from "./CurrentInfo/CurrentInfo";
-import "../index.css";
+import Search from "./Search";
+import CurrentInfo from "./CurrentInfo";
+import Forecast from "./Forecast";
+import "./weatherApp.css";
 
 function WeatherApp() {
   const [locationInfo, setLocationInfo] = React.useState({
@@ -84,12 +85,13 @@ function WeatherApp() {
             onSearch={getLocationInfo}
             location={locationInfo.LocationName}
           />
-          <Info
+          <CurrentInfo
             currentInfo={currentInfo}
             locationName={locationInfo.LocationName}
-          ></Info>
+          ></CurrentInfo>
         </div>
       )}
+      <Forecast></Forecast>
     </div>
   );
 }
