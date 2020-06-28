@@ -51,7 +51,7 @@ function Search({ onSearch, location }) {
 
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string
 };
 
 useInputValue.propTypes = {
