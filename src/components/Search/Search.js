@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "../Search/search.css";
-import icons from "../../assets/search-icons.svg";
+import icons from "../../assets/icons.svg";
 
 function useInputValue(defaultValue = "") {
   const [value, setValue] = React.useState(defaultValue);
@@ -51,7 +51,7 @@ function Search({ onSearch, location }) {
 
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  location: PropTypes.string.isRequired
+  location: PropTypes.string
 };
 
 useInputValue.propTypes = {
