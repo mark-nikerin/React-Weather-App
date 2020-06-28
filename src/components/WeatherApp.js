@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Search from "./Search/Search";
-import Info from "./Info/Info";
+import Info from "./CurrentInfo/CurrentInfo";
 import "../index.css";
 
 function WeatherApp() {

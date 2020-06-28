@@ -1,10 +1,10 @@
 import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
-import "../Info/info.css";
+import "./currentInfo.css";
 import icons from "../../assets/icons.svg";
 
-function Info(props) {
+function CurrentInfo(props) {
   const [currentInfo, locationName] = props;
 
   let sign =
@@ -31,9 +31,9 @@ function Info(props) {
   );
 }
 
-Info.propTypes = {
+CurrentInfo.propTypes = {
   currentInfo: PropTypes.object,
   locationName: PropTypes.string,
 };
 
-export default Info;
+export default CurrentInfo;
