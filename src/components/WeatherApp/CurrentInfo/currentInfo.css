@@ -6,7 +6,7 @@
 }
 
 .info-location {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   font-family: Montserrat;
   font-style: normal;
@@ -19,6 +19,11 @@
 }
 
 .location-icon {
+  margin-right: 10px;
+}
+
+.weather-icon {
+  margin-left: 10px;
   margin-right: 10px;
 }
 
