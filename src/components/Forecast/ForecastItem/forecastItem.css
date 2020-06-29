@@ -1,14 +1,14 @@
 .forecast-item {
   width: 190px;
   height: 275px;
-  background: #FFFFFF;
-  border: 1px solid #C4C4C4; 
-  box-shadow: 0px 0px 5px #C4C4C4;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  box-shadow: 0px 0px 5px #c4c4c4;
   border-radius: 35px;
   margin-right: 35px;
 }
 
-.forecast-item:last-child { 
+.forecast-item:last-child {
   margin-right: 0;
 }
 
@@ -18,10 +18,10 @@
   align-items: center;
 }
 
-.day-info h3 { 
+.day-info h3 {
   margin: 0;
   margin-bottom: 10px;
-  margin-top: 20px; 
+  margin-top: 20px;
   font-style: normal;
   font-weight: 600;
   font-size: 16pt;
@@ -30,10 +30,10 @@
 }
 
 .day-info p {
-  margin: 0; 
+  margin: 0;
   font-weight: 600;
   font-size: 9pt;
-  line-height: 12px; 
+  line-height: 12px;
   color: #828282;
 }
 
@@ -41,44 +41,73 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .weather-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 15px;
 }
 
 .weather-item span {
-  display: flex;  
-  align-items: center; 
-  justify-content: space-between; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-weight: 600;
   font-size: 20pt;
-  line-height: 30px; 
+  line-height: 30px;
   color: #333333;
-  width: 100%;   
+  width: 100%;
 }
 
 .weather-item span:last-child {
-  color: #828282; 
+  color: #828282;
 }
 
-.weather-item svg { 
+.weather-item svg {
   margin-right: 10px;
 }
 
-.wind-info tr { 
-  align-self: center;
+.wind-info-title {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 5px;
 }
 
-.wind-info p {
-  margin: 0; 
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 16px; 
+.wind-info-title span {
+  margin: 0;
+  margin-left: 30px;
+  margin-right: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 12px;
+  color: #828282;
+}
+
+.wind-info {
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 18px;
+  margin-right: 18px;
+  text-align: center;
+}
+
+.wind-info span {
+  display: block;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 16px;
   color: #333333;
+}
+
+.wind-info svg {
+  margin: 0;
+  margin-right: 10px;
 }

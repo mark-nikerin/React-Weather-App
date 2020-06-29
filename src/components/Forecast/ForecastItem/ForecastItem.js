@@ -44,13 +44,33 @@ const ForecastItem = ({ dayForecast }) => {
             {dayForecast.Night.Temperature.Unit}
           </span>
         </div>
+        <div className="weather-item">
+          <div className="wind-info-title">
+            <span>Day</span>
+            <span>Night</span>
+          </div>
+          <div className="wind-info">
+            <svg width="34" height="24">
+              <use xlinkHref={`${icons}#wind`}></use>
+            </svg>
+            <span>{dayForecast.Day.Wind.SpeedValue} {dayForecast.Day.Wind.SpeedUnit}</span>
+            <span>{dayForecast.Night.Wind.SpeedValue} {dayForecast.Night.Wind.SpeedUnit}</span>
+          </div>
+          <div className="wind-info">
+            <svg width="34" height="24">
+              <use xlinkHref={`${icons}#compass`}></use>
+            </svg>
+            <span>{dayForecast.Day.Wind.DirectionDegrees}° {dayForecast.Day.Wind.DirectionName}</span>
+            <span>{dayForecast.Night.Wind.DirectionDegrees}° {dayForecast.Night.Wind.DirectionName}</span>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 ForecastItem.propTypes = {
-  dayForecast: PropTypes.object.isRequired
-}
+  dayForecast: PropTypes.object.isRequired,
+};
 
 export default ForecastItem;

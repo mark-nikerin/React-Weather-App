@@ -5,7 +5,7 @@ import "./currentInfo.css";
 import icons from "../../assets/icons.svg";
 import weatherIcons from "../../assets/weather-icons.svg";
 
-const CurrentInfo=(props) => {
+const CurrentInfo = (props) => {
   const temp = props.currentInfo.Temperature.Metric;
   let sign = temp.Value > 0 ? "+" : temp.Value === 0 ? "" : "-";
 
@@ -17,17 +17,21 @@ const CurrentInfo=(props) => {
         </svg>
         {props.locationName}
         <svg className="weather-icon" width="48" height="48">
-          <use xlinkHref={`${weatherIcons}#${props.currentInfo.WeatherIcon}`}></use>
+          <use
+            xlinkHref={`${weatherIcons}#${props.currentInfo.WeatherIcon}`}
+          ></use>
         </svg>
         {sign}
         {temp.Value}°{temp.Unit}
       </h1>
       <h2 className="info-date">
-        {moment(props.currentInfo.LocalObservationDateTime).format("dddd, MMMM D")}
+        {moment(props.currentInfo.LocalObservationDateTime).format(
+          "dddd, MMMM D"
+        )}
       </h2>
     </div>
   );
-}
+};
 
 CurrentInfo.propTypes = {
   currentInfo: PropTypes.object,

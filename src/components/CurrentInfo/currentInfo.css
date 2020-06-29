@@ -1,18 +1,18 @@
 .info {
-  display: flex; 
+  display: flex;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   margin-top: 45px;
 }
 
 .info-location {
   display: flex;
-  align-items: center; 
+  align-items: center;
   font-style: normal;
   font-weight: 600;
   font-size: 36px;
-  line-height: 44px;  
-  color: #333333;  
+  line-height: 44px;
+  color: #333333;
   margin: 0;
   margin-bottom: 10px;
 }
@@ -26,12 +26,12 @@
   margin-right: 10px;
 }
 
-.info-date { 
+.info-date {
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
-  line-height: 29px; 
+  line-height: 29px;
   color: #333333;
-  text-align: center; 
+  text-align: center;
   margin: 0;
 }
