@@ -1,0 +1,84 @@
+.forecast-item {
+  width: 190px;
+  height: 275px;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4; 
+  box-shadow: 0px 0px 5px #C4C4C4;
+  border-radius: 35px;
+  margin-right: 35px;
+}
+
+.day-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.day-info h3 { 
+  margin: 0;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16pt;
+  line-height: 24px;
+  color: #333333;
+}
+
+.day-info p {
+  margin: 0;
+  font-family: Montserrat; 
+  font-weight: 600;
+  font-size: 9pt;
+  line-height: 12px; 
+  color: #828282;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.weather-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-item span {
+  display: flex;  
+  align-items: center; 
+  justify-content: space-between;
+  font-family: Montserrat; 
+  font-weight: 600;
+  font-size: 20pt;
+  line-height: 30px; 
+  color: #333333;
+  width: 100%;   
+}
+
+.weather-item span:last-child {
+  color: #828282; 
+}
+
+.weather-item svg { 
+  margin-right: 10px;
+}
+
+.wind-info tr { 
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.wind-info p {
+  margin: 0;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px; 
+  color: #333333;
+}
