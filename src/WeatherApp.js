@@ -1,11 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Search from "./components/Search";
-import CurrentInfo from "./components/CurrentInfo";
-import Forecast from "./components/Forecast";
+import Search from "./components/Search"; 
+import Loader from "./components/Loader"
 import "./weatherApp.css";
 
 const WeatherApp = () => {
+ 
+  const CurrentInfo = React.lazy(
+    () =>
+      new Promise((resolve) =>
+        setTimeout(() => resolve(import("./components/CurrentInfo")), 700)
+      )
+  );
+
+  const Forecast = React.lazy(
+    () =>
+      new Promise((resolve) =>
+        setTimeout(() => resolve(import("./components/Forecast")), 700)
+      )
+  ); 
+
   const [locationInfo, setLocationInfo] = React.useState({
     LocationKey: "",
     LocationName: "",
@@ -225,11 +239,13 @@ const WeatherApp = () => {
             onSearch={getLocationInfo}
             location={locationInfo.LocationName}
           />
-          <CurrentInfo
-            currentInfo={currentInfo}
-            locationName={locationInfo.LocationName}
-          />
-          <Forecast forecasts={dailyForecast} />
+          <React.Suspense fallback={<Loader />}>
+            <CurrentInfo
+              currentInfo={currentInfo}
+              locationName={locationInfo.LocationName}
+            />
+            <Forecast forecasts={dailyForecast} />
+          </React.Suspense> 
         </div>
       ) : (
         <div>
@@ -239,6 +255,6 @@ const WeatherApp = () => {
       )}
     </div>
   );
-}
+};
 
 export default WeatherApp;
