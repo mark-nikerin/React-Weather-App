@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dbbb300922fd8d83cda73b05f7bf39bd",
+    "revision": "454994c1d383509599e7e59d1785713d",
     "url": "/React-Weather-App/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/React-Weather-App/static/css/5.ceed0c16.chunk.css"
   },
   {
-    "revision": "8a97e5d85acd26a4482c",
-    "url": "/React-Weather-App/static/css/main.5bae98a6.chunk.css"
+    "revision": "948db300d847f202c5df",
+    "url": "/React-Weather-App/static/css/main.e78e96d6.chunk.css"
   },
   {
     "revision": "b583ce442b9a12e4d105",
@@ -36,12 +36,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/React-Weather-App/static/js/5.8cf322ce.chunk.js"
   },
   {
-    "revision": "8a97e5d85acd26a4482c",
+    "revision": "948db300d847f202c5df",
     "url": "/React-Weather-App/static/js/main.4788067e.chunk.js"
   },
   {
     "revision": "c20719a0b8a6021e3a97",
     "url": "/React-Weather-App/static/js/runtime-main.52b3071e.js"
+  },
+  {
+    "revision": "ee6539921d713482b8ccd4d0d23961bb",
+    "url": "/React-Weather-App/static/media/Montserrat-Regular.ee653992.ttf"
   },
   {
     "revision": "9ed528d1c60daad92d9cb4006da72288",
