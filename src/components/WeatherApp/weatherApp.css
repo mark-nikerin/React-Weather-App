@@ -1,17 +1,31 @@
-.main-search {
+.main { 
   margin-top: -120px;
-}
-
-.main-forecast {
-  margin-top: -120px;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: center;
+  justify-content: center;
+  min-height: 100vh;
+  height: 100%;
+} 
 
 .search-title {
-  text-align: center;
-  font-family: Montserrat;
+  text-align: center; 
   font-style: normal;
   font-weight: 600;
   font-size: 48px;
   line-height: 59px;  
   color: #4F4F4F;
+}
+
+.weatherAPI-provider { 
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px; 
+  color: #FFFFFF;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #e00;
+  vertical-align: bottom;
 }

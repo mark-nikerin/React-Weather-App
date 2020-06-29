@@ -8,6 +8,10 @@
   margin-right: 35px;
 }
 
+.forecast-item:last-child { 
+  margin-right: 0;
+}
+
 .day-info {
   display: flex;
   flex-direction: column;
@@ -17,8 +21,7 @@
 .day-info h3 { 
   margin: 0;
   margin-bottom: 10px;
-  margin-top: 20px;
-  font-family: Montserrat;
+  margin-top: 20px; 
   font-style: normal;
   font-weight: 600;
   font-size: 16pt;
@@ -27,8 +30,7 @@
 }
 
 .day-info p {
-  margin: 0;
-  font-family: Montserrat; 
+  margin: 0; 
   font-weight: 600;
   font-size: 9pt;
   line-height: 12px; 
@@ -51,8 +53,7 @@
 .weather-item span {
   display: flex;  
   align-items: center; 
-  justify-content: space-between;
-  font-family: Montserrat; 
+  justify-content: space-between; 
   font-weight: 600;
   font-size: 20pt;
   line-height: 30px; 
@@ -75,8 +76,7 @@
 }
 
 .wind-info p {
-  margin: 0;
-  font-family: Montserrat;
+  margin: 0; 
   font-weight: 500;
   font-size: 13px;
   line-height: 16px; 

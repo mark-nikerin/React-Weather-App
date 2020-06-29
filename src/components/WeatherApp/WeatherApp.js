@@ -17,7 +17,7 @@ function WeatherApp() {
 
   const getIcon = (id) => {
     let iconId;
-  
+
     switch (id) {
       case 1:
       case 2:
@@ -94,11 +94,12 @@ function WeatherApp() {
       default:
         iconId = "clear-day";
     }
-  
+
     return iconId;
   };
-  
-  function getLocationInfo(locationQuery) {
+
+  const getLocationInfo = (locationQuery) => {
+    console.log(locationQuery);
     fetch(
       "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE&q=" +
         locationQuery +
@@ -122,9 +123,9 @@ function WeatherApp() {
           getCurrentInfo(locationInfo.LocationKey);
         }
       });
-  }
+  };
 
-  function getCurrentInfo(locationKey) {
+  const getCurrentInfo = (locationKey) => {
     fetch(
       "http://dataservice.accuweather.com/currentconditions/v1/" +
         locationKey +
@@ -145,18 +146,18 @@ function WeatherApp() {
               Metric: {
                 Value: x.Temperature.Metric.Value,
                 Unit: x.Temperature.Metric.Unit,
-              }
-            }, 
+              },
+            },
           };
           return condition;
         });
-        
+
         setCurrentInfo(result[0]);
         getDailyForecast(locationKey);
       });
-  }
+  };
 
-  function getDailyForecast(locationKey) {
+  const getDailyForecast = (locationKey) => {
     fetch(
       "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
         locationKey +
@@ -166,9 +167,9 @@ function WeatherApp() {
       .then((forecast) => {
         let result = forecast.DailyForecasts.map((x) => {
           let dayForecast = {
-            Date: x.Date ,
+            Date: x.Date,
             Day: {
-              Icon: getIcon(x.Day.Icon), 
+              Icon: getIcon(x.Day.Icon),
               Phrase: x.Day.ShortPhrase,
               Temperature: {
                 Value: x.Temperature.Maximum.Value,
@@ -178,11 +179,11 @@ function WeatherApp() {
                 SpeedValue: x.Day.Wind.Speed.Value,
                 SpeedUnit: x.Day.Wind.Speed.Unit,
                 DirectionDegrees: x.Day.Wind.Direction.Degrees,
-                DirectionName: x.Day.Wind.Direction.Localized
-              } 
-            } ,
+                DirectionName: x.Day.Wind.Direction.Localized,
+              },
+            },
             Night: {
-              Icon: getIcon(x.Night.Icon), 
+              Icon: getIcon(x.Night.Icon),
               Phrase: x.Night.ShortPhrase,
               Temperature: {
                 Value: x.Temperature.Minimum.Value,
@@ -192,15 +193,19 @@ function WeatherApp() {
                 SpeedValue: x.Night.Wind.Speed.Value,
                 SpeedUnit: x.Night.Wind.Speed.Unit,
                 DirectionDegrees: x.Night.Wind.Direction.Degrees,
-                DirectionName: x.Night.Wind.Direction.Localized
-              } 
-            }
-          }; 
+                DirectionName: x.Night.Wind.Direction.Localized,
+              },
+            },
+          };
           return dayForecast;
-        }); 
+        });
         setDailyForecast(result);
       });
-  }
+  };
+
+  getIcon.propTypes = {
+    id: PropTypes.number.isRequired,
+  };
 
   getLocationInfo.propTypes = {
     location: PropTypes.string.isRequired,
@@ -210,16 +215,14 @@ function WeatherApp() {
     locationKey: PropTypes.string.isRequired,
   };
 
+  getDailyForecast.propTypes = {
+    locationKey: PropTypes.string.isRequired,
+  };
+
   return (
-    <div>
-      {!locationInfo.LocationKey && !currentInfo && (
-        <div className="main-search">
-          <h1 className="search-title">Weather Forecast</h1>
-          <Search className="search" onSearch={getLocationInfo} />
-        </div>
-      )}
-      {locationInfo.LocationKey && currentInfo && (
-        <div className="main-forecast">
+    <div className="main">
+      {locationInfo.LocationKey && currentInfo ? (
+        <div>
           <Search
             className="search"
             onSearch={getLocationInfo}
@@ -229,7 +232,12 @@ function WeatherApp() {
             currentInfo={currentInfo}
             locationName={locationInfo.LocationName}
           />
-          <Forecast forecasts={dailyForecast}/>
+          <Forecast forecasts={dailyForecast} />
+        </div>
+      ) : (
+        <div>
+          <h1 className="search-title">Weather Forecast</h1>
+          <Search className="search" onSearch={getLocationInfo} />
         </div>
       )}
     </div>

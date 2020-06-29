@@ -1,10 +1,9 @@
 import React from "react";
 import moment from "moment";
-import "./forecastItem.css"
+import "./forecastItem.css";
 import icons from "../../../../assets/weather-icons.svg";
 
-function ForecastItem({dayForecast}) {
-
+function ForecastItem({ dayForecast }) {
   const daySign =
     dayForecast.Day.Temperature.Value > 0
       ? "+"
@@ -18,7 +17,7 @@ function ForecastItem({dayForecast}) {
       : dayForecast.Night.Temperature.Value === 0
       ? ""
       : "-";
- 
+
   return (
     <div className="forecast-item">
       <div className="day-info">
@@ -31,17 +30,20 @@ function ForecastItem({dayForecast}) {
             <svg width="48" height="48">
               <use xlinkHref={`${icons}#${dayForecast.Day.Icon}`}></use>
             </svg>
-            {daySign}{Math.round(dayForecast.Day.Temperature.Value)}°{dayForecast.Day.Temperature.Unit}
+            {daySign}
+            {Math.round(dayForecast.Day.Temperature.Value)}°
+            {dayForecast.Day.Temperature.Unit}
           </span>
           <span>
             <svg width="48" height="48">
               <use xlinkHref={`${icons}#${dayForecast.Night.Icon}`}></use>
             </svg>
-            {nightSign}{Math.round(dayForecast.Night.Temperature.Value)}°{dayForecast.Night.Temperature.Unit}
+            {nightSign}
+            {Math.round(dayForecast.Night.Temperature.Value)}°
+            {dayForecast.Night.Temperature.Unit}
           </span>
         </div>
       </div>
-       
     </div>
   );
 }
