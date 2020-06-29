@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Search from "./Search";
-import CurrentInfo from "./CurrentInfo";
-import Forecast from "./Forecast";
+import Search from "./components/Search";
+import CurrentInfo from "./components/CurrentInfo";
+import Forecast from "./components/Forecast";
 import "./weatherApp.css";
 
-function WeatherApp() {
+const WeatherApp = () => {
   const [locationInfo, setLocationInfo] = React.useState({
     LocationKey: "",
     LocationName: "",
@@ -206,15 +206,12 @@ function WeatherApp() {
   getIcon.propTypes = {
     id: PropTypes.number.isRequired,
   };
-
   getLocationInfo.propTypes = {
     location: PropTypes.string.isRequired,
   };
-
   getCurrentInfo.propTypes = {
     locationKey: PropTypes.string.isRequired,
   };
-
   getDailyForecast.propTypes = {
     locationKey: PropTypes.string.isRequired,
   };

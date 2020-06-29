@@ -2,10 +2,10 @@ import React from "react";
 import moment from "moment";
 import PropTypes from "prop-types";
 import "./currentInfo.css";
-import icons from "../../../assets/icons.svg";
-import weatherIcons from "../../../assets/weather-icons.svg";
+import icons from "../../assets/icons.svg";
+import weatherIcons from "../../assets/weather-icons.svg";
 
-function CurrentInfo(props) {
+const CurrentInfo=(props) => {
   const temp = props.currentInfo.Temperature.Metric;
   let sign = temp.Value > 0 ? "+" : temp.Value === 0 ? "" : "-";
 

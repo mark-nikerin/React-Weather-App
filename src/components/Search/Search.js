@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./search.css";
-import icons from "../../../assets/icons.svg";
+import icons from "../../assets/icons.svg";
 
 function useInputValue(defaultValue = "") {
   const [value, setValue] = React.useState(defaultValue);
@@ -13,10 +13,10 @@ function useInputValue(defaultValue = "") {
   };
 }
 
-function Search({ onSearch, location }) {
+const Search = ({ onSearch, location }) => {
   const searchField = useInputValue(location);
 
-  function searchHandler(event) {
+  const searchHandler = (event) => {
     event.preventDefault();
 
     if (searchField.value().trim()) {

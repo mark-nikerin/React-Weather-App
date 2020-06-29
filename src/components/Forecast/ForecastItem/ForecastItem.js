@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import moment from "moment";
 import "./forecastItem.css";
-import icons from "../../../../assets/weather-icons.svg";
+import icons from "../../../assets/weather-icons.svg";
 
-function ForecastItem({ dayForecast }) {
+const ForecastItem = ({ dayForecast }) => {
   const daySign =
     dayForecast.Day.Temperature.Value > 0
       ? "+"
@@ -46,6 +47,10 @@ function ForecastItem({ dayForecast }) {
       </div>
     </div>
   );
+};
+
+ForecastItem.propTypes = {
+  dayForecast: PropTypes.object.isRequired
 }
 
 export default ForecastItem;
