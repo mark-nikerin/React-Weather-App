@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Search from "./components/Search"; 
-import Loader from "./components/Loader"
+import Search from "./components/Search";
+import Loader from "./components/Loader";
 import "./weatherApp.css";
 
 const WeatherApp = () => {
- 
   const CurrentInfo = React.lazy(
     () =>
       new Promise((resolve) =>
@@ -18,12 +17,14 @@ const WeatherApp = () => {
       new Promise((resolve) =>
         setTimeout(() => resolve(import("./components/Forecast")), 700)
       )
-  ); 
+  );
 
   const [locationInfo, setLocationInfo] = React.useState({
     LocationKey: "",
     LocationName: "",
   });
+
+  const API_KEY = process.env.REACT_APP_YOUR_API_KEY_NAME;
 
   const [currentInfo, setCurrentInfo] = React.useState();
 
@@ -115,7 +116,9 @@ const WeatherApp = () => {
   const getLocationInfo = (locationQuery) => {
     console.log(locationQuery);
     fetch(
-      "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE&q=" +
+      "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20" +
+        API_KEY +
+        "&q=" +
         locationQuery +
         "&language=en-US"
     )
@@ -143,7 +146,8 @@ const WeatherApp = () => {
     fetch(
       "http://dataservice.accuweather.com/currentconditions/v1/" +
         locationKey +
-        "?apikey=cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE"
+        "?apikey=" +
+        API_KEY
     )
       .then((response) => response.json())
       .then((conditions) => {
@@ -175,7 +179,9 @@ const WeatherApp = () => {
     fetch(
       "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
         locationKey +
-        "?apikey=cxJJEtLXIeazgfGVT1Wod8r8bPLlUxtE&language=en-US&details=true&metric=true"
+        "?apikey=" +
+        API_KEY +
+        "&language=en-US&details=true&metric=true"
     )
       .then((response) => response.json())
       .then((forecast) => {
@@ -245,7 +251,7 @@ const WeatherApp = () => {
               locationName={locationInfo.LocationName}
             />
             <Forecast forecasts={dailyForecast} />
-          </React.Suspense> 
+          </React.Suspense>
         </div>
       ) : (
         <div>
