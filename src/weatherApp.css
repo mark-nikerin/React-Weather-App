@@ -16,16 +16,4 @@
   font-size: 48px;
   line-height: 59px;
   color: #4f4f4f;
-}
-
-.weatherAPI-provider {
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
-  color: #ffffff;
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background-color: #e00;
-  vertical-align: bottom;
-}
+}  
