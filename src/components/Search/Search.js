@@ -1,29 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "../Search/search.css";
+import "./search.css";
 import icons from "../../assets/icons.svg";
 
 function useInputValue(defaultValue = "") {
   const [value, setValue] = React.useState(defaultValue);
 
   return {
-    bind: {
-      value,
-      type: "search",
-      className: "search-input",
-      onChange: (event) => setValue(event.target.value),
-      placeholder: "Search city...",
-      autoComplete: "on",
-    },
     clear: () => setValue(""),
     value: () => value,
+    set: (value) => setValue(value),
   };
 }
 
-function Search({ onSearch, location }) {
+const Search = ({ onSearch, location }) => {
   const searchField = useInputValue(location);
 
-  function searchHandler(event) {
+  const searchHandler = (event) => {
     event.preventDefault();
 
     if (searchField.value().trim()) {
@@ -38,7 +31,13 @@ function Search({ onSearch, location }) {
         <svg className="search-icon" width="18" height="18">
           <use xlinkHref={`${icons}#search`}></use>
         </svg>
-        <input {...searchField.bind} />
+        <input
+          value={searchField.value()}
+          type="search"
+          className="search-input"
+          onChange={(event) => searchField.set(event.target.value)}
+          placeholder="Search city..."
+        />
       </div>
       <button className="search-button" type="submit">
         <svg width="15" height="10">
@@ -51,7 +50,7 @@ function Search({ onSearch, location }) {
 
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  location: PropTypes.string
+  location: PropTypes.string,
 };
 
 useInputValue.propTypes = {
