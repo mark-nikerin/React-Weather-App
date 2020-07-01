@@ -116,7 +116,7 @@ const WeatherApp = () => {
   const getLocationInfo = (locationQuery) => {
     console.log(locationQuery);
     fetch(
-      "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=%20" +
+      "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=" +
         API_KEY +
         "&q=" +
         locationQuery +
@@ -144,7 +144,7 @@ const WeatherApp = () => {
 
   const getCurrentInfo = (locationKey) => {
     fetch(
-      "http://dataservice.accuweather.com/currentconditions/v1/" +
+      "https://dataservice.accuweather.com/currentconditions/v1/" +
         locationKey +
         "?apikey=" +
         API_KEY
@@ -177,7 +177,7 @@ const WeatherApp = () => {
 
   const getDailyForecast = (locationKey) => {
     fetch(
-      "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
+      "https://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
         locationKey +
         "?apikey=" +
         API_KEY +

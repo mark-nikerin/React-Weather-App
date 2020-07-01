@@ -5,12 +5,16 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height:100vh; 
+  min-height: 100vh;
   height: 100%;
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; 
-  background-image: url("./assets/bg.jpg"); 
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("./assets/bg.jpg");
   background-size: 100%;
-}  
+}
 
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/Montserrat-Regular.ttf") format("truetype");
+}
