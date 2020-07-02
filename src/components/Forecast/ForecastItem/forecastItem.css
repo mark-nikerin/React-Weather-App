@@ -7,8 +7,9 @@
   box-shadow: 0px 0px 5px #c4c4c4;
   border-radius: 35px;
   margin-right: 19px;
-  margin-left: 19px;
+  margin-left: 19px;  
   cursor: pointer;
+  z-index: 2;
 }
 
 .forecast-item:hover {
@@ -29,6 +30,7 @@
   margin-right: 19px;
   margin-left: 19px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .day-info {

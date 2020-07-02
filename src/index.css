@@ -12,8 +12,7 @@ body {
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #DAE6F2;
-  z-index: 1;
+  background-color: #DAE6F2; 
 }
 
 .footer {
@@ -33,29 +32,28 @@ body {
 
 .api-provider {  
   position: fixed; 
+  align-items: center;
   left: 0;
   bottom: 0;
   width: 100%; 
   margin-top: 95vh;
   margin-bottom: 20px; 
   text-decoration: none;  
-}
-
-.api-provider a {   
-  width: 100vw; 
-  font-size: 12px;
-  line-height: 15px;
-  text-decoration: none;  
-  color: white; 
-  font-size: 12px;
-  line-height: 15px;
   z-index: 0;
 }
 
-.api-provider a p {   
-  margin: 0;
-  text-align: center;
-}
+.api-provider a {   
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration: none; 
+  text-align: center; 
+  color: white; 
+  font-size: 12px;
+  line-height: 15px; 
+  z-index: -1;
+} 
 
 @font-face {
   font-family: "Montserrat";

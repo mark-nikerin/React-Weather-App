@@ -50,7 +50,7 @@ const DetailsPane = ({ details }) => {
           <div className="feels-like">
             <p>{details.Day.Phrase}</p>
             <p>
-              Feels like:
+              Feels like:{' '}
               {daySignFeel}
               {Math.round(details.Day.Temperature.RealFeelValue)}°
               {details.Day.Temperature.Unit}
@@ -71,7 +71,7 @@ const DetailsPane = ({ details }) => {
           <div className="feels-like">
             <p>{details.Night.Phrase}</p>
             <p>
-              Feels like:
+              Feels like:{' '}
               {nightSignFeel}
               {Math.round(details.Night.Temperature.RealFeelValue)}°
               {details.Night.Temperature.Unit}
@@ -83,18 +83,18 @@ const DetailsPane = ({ details }) => {
       <div className="statistics">
         <div className="statistics-item">
         <p>
-            Rain probability: {details.Day.RainProbability}%
+            Rain probability:{' '}{details.Day.RainProbability}%
           </p>
           <p>  
-            Cloud cover: {details.Day.CloudCover}%
+            Cloud cover:{' '}{details.Day.CloudCover}%
           </p>
         </div>
         <div className="statistics-item">
           <p>
-            Rain probability: {details.Night.RainProbability}%
+            Rain probability:{' '}{details.Night.RainProbability}%
           </p>
           <p>  
-            Cloud cover: {details.Night.CloudCover}%
+            Cloud cover:{' '}{details.Night.CloudCover}%
           </p>
         </div>
       </div>

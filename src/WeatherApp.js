@@ -332,24 +332,18 @@ const WeatherApp = () => {
             {status.isLoading && <Loader />}
           </div>
         )}
-        {!status.isLoading && !status.error && !currentInfo && (
+        {(!status.isLoading || !status.error) && !currentInfo && (
           <div>
             <h1 className="search-title">Weather Forecast</h1>
-            <Search className="search" onSearch={getLocationInfo} />
-            {status.isLoading && <Loader />}
+            <Search className="search" onSearch={getLocationInfo} /> 
           </div>
-        )} 
-        {status.error && (
-          <div>
-            <h1 className="search-title">Weather Forecast</h1>
-            <Search className="search" onSearch={getLocationInfo} />
-          </div>
-        )}
-      </div>
-      <div className="api-provider">
-        <a href="https://www.accuweather.com/"><p>Powered by AccuWeather</p></a>
+        )}  
       </div>
       <div className="footer"></div>
+      
+      <div className="api-provider">
+        <a href="https://www.accuweather.com/">Powered by AccuWeather</a>
+      </div>
     </React.Fragment>
   );
 };
