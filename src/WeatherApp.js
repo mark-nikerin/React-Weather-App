@@ -153,14 +153,14 @@ const WeatherApp = () => {
           setStatus({ isLoading: false, error: false });
           getCurrentInfo(locationInfo.LocationKey);
         } else {
-          alert.show("Сity not found", {
-            title: "Not found",
+          alert.show("Сity not found. Let's try again!", {
+            title: "Nothing found",
           });
           setStatus({ isLoading: false, error: true });
         }
       })
       .catch(() => {
-        alert.show("Looks like the AccuWeather API limit has been reached", {
+        alert.show("Looks like the AccuWeather API limit has been reached. \nDon’t be sad, come back tomorrow and try again!", {
           title: "Something is wrong",
         });
         setStatus({ isLoading: false, error: true });
@@ -310,8 +310,7 @@ const WeatherApp = () => {
 
   return (
     <React.Fragment>
-      <div className="main">
-        {status.isLoading && <Loader />}
+      <div className="main"> 
         {!status.error && currentInfo && (
           <div>
             {!status.isLoading && (

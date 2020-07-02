@@ -1,11 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ForecastItem from "./ForecastItem";
-import DetailsPane from "./DetailsPane"
+import DetailsPane from "./DetailsPane";
 import "./forecast.css";
 
 function Forecast({ forecasts }) {
-  const [details, setDetails] = React.useState({ id: -1, show: false, data: {} }); 
+  const [details, setDetails] = React.useState({
+    id: -1,
+    show: false,
+    data: {},
+  });
 
   const onDetailsOpen = (id) => {
     if (details.id && details.id === id) {
@@ -13,7 +17,7 @@ function Forecast({ forecasts }) {
       console.log("hide details");
     } else {
       const data = forecasts[id-1];
-      console.log("open details for id " + id + ":    " + data);
+      console.log("open details for id " + id);
       setDetails({ id: id, show: true, data: data });
     }
   };
@@ -26,13 +30,13 @@ function Forecast({ forecasts }) {
             <ForecastItem
               dayForecast={dayForecast}
               key={id}
-              id={id + 1}
+              id={id+1}
               onDetailsOpen={onDetailsOpen}
             />
           );
         })}
       </div>
-      {details.show && <DetailsPane details={details} />}
+      {details && details.show && <DetailsPane details={details.data} />}
     </React.Fragment>
   );
 }
