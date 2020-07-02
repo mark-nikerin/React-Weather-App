@@ -36,3 +36,13 @@
   margin: 0;
   margin-bottom: 10px;
 }
+
+@media (max-width: 800px) {
+  .info-location {
+    font-size: 30px;
+    line-height: 44px;
+  }
+
+  .info-date {
+  }
+}

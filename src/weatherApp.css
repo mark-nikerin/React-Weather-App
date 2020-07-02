@@ -19,3 +19,10 @@
   line-height: 59px;
   color: #4f4f4f;
 }  
+
+@media (max-width: 800px) {
+  .search-title { 
+    font-size: 42px;
+  line-height: 50px;
+  }
+}

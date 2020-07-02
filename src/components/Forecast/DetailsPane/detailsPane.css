@@ -8,9 +8,10 @@
   border: 1px solid #c4c4c4;
   box-shadow: 0px 0px 5px #c4c4c4;
   border-radius: 35px;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 50px;
 }
 
 .temperatures {
@@ -147,4 +148,10 @@
 
 .set-rise:last-child {
   margin-right: 50px;
+}
+
+@media (max-width: 1050px) {
+  .details-pane {
+    display: none;
+  }
 }
