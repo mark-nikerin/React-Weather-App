@@ -234,9 +234,12 @@ const WeatherApp = () => {
             Date: x.Date,
             Day: {
               Icon: getIcon(x.Day.Icon),
-              Phrase: x.Day.ShortPhrase,
+              Phrase: x.Day.IconPhrase,
+              RainProbability: x.Day.RainProbability,
+              CloudCover: x.Day.CloudCover,
               Temperature: {
                 Value: x.Temperature.Maximum.Value,
+                RealFeelValue: x.RealFeelTemperature.Maximum.Value,
                 Unit: x.Temperature.Maximum.Unit,
               },
               Wind: {
@@ -248,9 +251,12 @@ const WeatherApp = () => {
             },
             Night: {
               Icon: getIcon(x.Night.Icon),
-              Phrase: x.Night.ShortPhrase,
+              Phrase: x.Night.IconPhrase,
+              RainProbability: x.Night.RainProbability,
+              CloudCover: x.Night.CloudCover,
               Temperature: {
                 Value: x.Temperature.Minimum.Value,
+                RealFeelValue: x.RealFeelTemperature.Minimum.Value,
                 Unit: x.Temperature.Minimum.Unit,
               },
               Wind: {
@@ -260,6 +266,14 @@ const WeatherApp = () => {
                 DirectionName: x.Night.Wind.Direction.Localized,
               },
             },
+            Sun: {
+              Rise: x.Sun.Rise,
+              Set: x.Sun.Set,
+            },
+            Moon: { 
+              Rise: x.Moon.Rise,
+              Set: x.Moon.Set,
+            }
           };
           return dayForecast;
         });
