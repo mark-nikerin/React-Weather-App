@@ -19,12 +19,17 @@ const WeatherApp = () => {
       )
   );
 
+  const API_KEY = process.env.REACT_APP_YOUR_API_KEY_NAME;
+
+  const [status, setStatus] = React.useState({
+    isLoading: false,
+    error: false,
+  });
+
   const [locationInfo, setLocationInfo] = React.useState({
     LocationKey: "",
     LocationName: "",
   });
-
-  const API_KEY = process.env.REACT_APP_YOUR_API_KEY_NAME;
 
   const [currentInfo, setCurrentInfo] = React.useState();
 
@@ -114,7 +119,6 @@ const WeatherApp = () => {
   };
 
   const getLocationInfo = (locationQuery) => {
-    console.log(locationQuery);
     fetch(
       "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=" +
         API_KEY +
@@ -122,10 +126,16 @@ const WeatherApp = () => {
         locationQuery +
         "&language=en-US"
     )
-      .then((response) => response.json())
-      .then((suggest) => {
-        let result = suggest.map((x) => {
-          let location = {
+      .then((response) => {
+        if (response.status !== 200) {
+          return Promise.reject(new Error(response.statusText));
+        }
+        setStatus({ isLoading: true, error: false });
+        return response.json();
+      })
+      .then((suggestions) => {
+        const result = suggestions.map((x) => {
+          const location = {
             LocationKey: x.Key,
             LocationName: x.LocalizedName + ", " + x.Country.LocalizedName,
           };
@@ -133,12 +143,18 @@ const WeatherApp = () => {
           return location;
         });
 
-        let locationInfo = result[0];
+        const locationInfo = result[0];
 
         if (locationInfo) {
           setLocationInfo(locationInfo);
+          setStatus({ isLoading: false, error: false });
           getCurrentInfo(locationInfo.LocationKey);
+        } else {
+          setStatus({ isLoading: false, error: true });
         }
+      })
+      .catch(() => {
+        setStatus({ isLoading: false, error: true });
       });
   };
 
@@ -149,10 +165,16 @@ const WeatherApp = () => {
         "?apikey=" +
         API_KEY
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status !== 200) {
+          return Promise.reject(new Error(response.statusText));
+        }
+        setStatus({ isLoading: true, error: false });
+        return response.json();
+      })
       .then((conditions) => {
-        let result = conditions.map((x) => {
-          let condition = {
+        const result = conditions.map((x) => {
+          const condition = {
             LocalObservationDateTime: x.LocalObservationDateTime,
             WeatherIcon: getIcon(x.WeatherIcon),
             IsDayTime: x.IsDayTime,
@@ -169,9 +191,15 @@ const WeatherApp = () => {
           };
           return condition;
         });
-
-        setCurrentInfo(result[0]);
-        getDailyForecast(locationKey);
+        if (result) {
+          setCurrentInfo(result[0]);
+          getDailyForecast(locationKey);
+        } else {
+          setStatus({ isLoading: false, error: true });
+        }
+      })
+      .catch(() => {
+        setStatus({ isLoading: false, error: true });
       });
   };
 
@@ -183,7 +211,13 @@ const WeatherApp = () => {
         API_KEY +
         "&language=en-US&details=true&metric=true"
     )
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status !== 200) {
+          return Promise.reject(new Error(response.statusText));
+        }
+        setStatus({ isLoading: true, error: false });
+        return response.json();
+      })
       .then((forecast) => {
         let result = forecast.DailyForecasts.map((x) => {
           let dayForecast = {
@@ -219,7 +253,15 @@ const WeatherApp = () => {
           };
           return dayForecast;
         });
-        setDailyForecast(result);
+        if (result) {
+          setDailyForecast(result);
+          setStatus({ isLoading: false, error: false });
+        } else {
+          setStatus({ isLoading: false, error: true });
+        }
+      })
+      .catch(() => {
+        setStatus({ isLoading: false, error: true });
       });
   };
 
@@ -238,25 +280,36 @@ const WeatherApp = () => {
 
   return (
     <div className="main">
-      {locationInfo.LocationKey && currentInfo ? (
+      {!status.error &&
+        (locationInfo.LocationKey && currentInfo ? (
+          <div>
+            {!status.isLoading && (
+              <div>
+                <React.Suspense fallback={<Loader />}>
+                  <Search
+                    className="search"
+                    onSearch={getLocationInfo}
+                    location={locationInfo.LocationName}
+                  />
+                  <CurrentInfo
+                    currentInfo={currentInfo}
+                    locationName={locationInfo.LocationName}
+                  />
+                  <Forecast forecasts={dailyForecast} />
+                </React.Suspense>
+              </div>
+            )}
+            {status.isLoading && <Loader />}
+          </div>
+        ) : (
+          <div>
+            <h1 className="search-title">Weather Forecast</h1>
+            <Search className="search" onSearch={getLocationInfo} />
+          </div>
+        ))}
+      {status.error && (
         <div>
-          <Search
-            className="search"
-            onSearch={getLocationInfo}
-            location={locationInfo.LocationName}
-          />
-          <React.Suspense fallback={<Loader />}>
-            <CurrentInfo
-              currentInfo={currentInfo}
-              locationName={locationInfo.LocationName}
-            />
-            <Forecast forecasts={dailyForecast} />
-          </React.Suspense>
-        </div>
-      ) : (
-        <div>
-          <h1 className="search-title">Weather Forecast</h1>
-          <Search className="search" onSearch={getLocationInfo} />
+          <h1 className="search-title">Error</h1>
         </div>
       )}
     </div>
