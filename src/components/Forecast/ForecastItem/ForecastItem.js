@@ -4,7 +4,7 @@ import moment from "moment";
 import "./forecastItem.css";
 import icons from "../../../assets/weather-icons.svg";
 
-const ForecastItem = ({ dayForecast }) => {
+const ForecastItem = ({ id, dayForecast, onDetailsOpen }) => {
   const daySign =
     dayForecast.Day.Temperature.Value > 0
       ? "+"
@@ -20,7 +20,7 @@ const ForecastItem = ({ dayForecast }) => {
       : "-";
 
   return (
-    <div className="forecast-item">
+    <div className="forecast-item" onClick={onDetailsOpen.bind(null, id)}>
       <div className="day-info">
         <h3>{moment(dayForecast.Date).format("dddd")}</h3>
         <p>{moment(dayForecast.Date).format("MMMM D")}</p>
@@ -71,6 +71,8 @@ const ForecastItem = ({ dayForecast }) => {
 
 ForecastItem.propTypes = {
   dayForecast: PropTypes.object.isRequired,
+  onDetailsOpen: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default ForecastItem;

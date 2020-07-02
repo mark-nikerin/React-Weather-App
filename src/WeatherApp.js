@@ -9,14 +9,14 @@ const WeatherApp = () => {
   const CurrentInfo = React.lazy(
     () =>
       new Promise((resolve) =>
-        setTimeout(() => resolve(import("./components/CurrentInfo")), 700)
+        setTimeout(() => resolve(import("./components/CurrentInfo")), 500)
       )
   );
 
   const Forecast = React.lazy(
     () =>
       new Promise((resolve) =>
-        setTimeout(() => resolve(import("./components/Forecast")), 700)
+        setTimeout(() => resolve(import("./components/Forecast")), 500)
       )
   );
 
