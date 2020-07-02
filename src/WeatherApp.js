@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types"; 
+import PropTypes from "prop-types";
 import { useAlert } from "react-alert";
 import Search from "./components/Search";
 import Loader from "./components/Loader";
@@ -154,13 +154,15 @@ const WeatherApp = () => {
           getCurrentInfo(locationInfo.LocationKey);
         } else {
           alert.show("Сity not found", {
-            title: "Not found"});
+            title: "Not found",
+          });
           setStatus({ isLoading: false, error: true });
         }
       })
       .catch(() => {
         alert.show("Looks like the AccuWeather API limit has been reached", {
-          title: "Something is wrong"});
+          title: "Something is wrong",
+        });
         setStatus({ isLoading: false, error: true });
       });
   };
@@ -204,7 +206,8 @@ const WeatherApp = () => {
           getDailyForecast(locationKey);
         } else {
           alert.show("Forecast not found", {
-            title: "Not found"});
+            title: "Not found",
+          });
           setStatus({ isLoading: false, error: true });
         }
       })
@@ -270,10 +273,10 @@ const WeatherApp = () => {
               Rise: x.Sun.Rise,
               Set: x.Sun.Set,
             },
-            Moon: { 
+            Moon: {
               Rise: x.Moon.Rise,
               Set: x.Moon.Set,
-            }
+            },
           };
           return dayForecast;
         });
@@ -282,7 +285,8 @@ const WeatherApp = () => {
           setStatus({ isLoading: false, error: false });
         } else {
           alert.show("Forecast not found", {
-            title: "Not found"});
+            title: "Not found",
+          });
           setStatus({ isLoading: false, error: true });
         }
       })
@@ -305,35 +309,37 @@ const WeatherApp = () => {
   };
 
   return (
+    <React.Fragment>
       <div className="main">
-        {!status.error &&
-          (locationInfo.LocationKey && currentInfo ? (
-            <div>
-              {!status.isLoading && (
-                <div>
-                  <React.Suspense fallback={<Loader />}>
-                    <Search
-                      className="search"
-                      onSearch={getLocationInfo}
-                      location={locationInfo.LocationName}
-                    />
-                    <CurrentInfo
-                      currentInfo={currentInfo}
-                      locationName={locationInfo.LocationName}
-                    />
-                    <Forecast forecasts={dailyForecast} />
-                  </React.Suspense>
-                </div>
-              )}
-              {status.isLoading && <Loader />}
-            </div>
-          ) : (
-            <div>
-              <h1 className="search-title">Weather Forecast</h1>
-              <Search className="search" onSearch={getLocationInfo} />
-              {status.isLoading && <Loader />}
-            </div>
-          ))}
+        {status.isLoading && <Loader />}
+        {!status.error && currentInfo && (
+          <div>
+            {!status.isLoading && (
+              <div>
+                <React.Suspense fallback={<Loader />}>
+                  <Search
+                    className="search"
+                    onSearch={getLocationInfo}
+                    location={locationInfo.LocationName}
+                  />
+                  <CurrentInfo
+                    currentInfo={currentInfo}
+                    locationName={locationInfo.LocationName}
+                  />
+                  <Forecast forecasts={dailyForecast} />
+                </React.Suspense>
+              </div>
+            )}
+            {status.isLoading && <Loader />}
+          </div>
+        )}
+        {!status.isLoading && !status.error && !currentInfo && (
+          <div>
+            <h1 className="search-title">Weather Forecast</h1>
+            <Search className="search" onSearch={getLocationInfo} />
+            {status.isLoading && <Loader />}
+          </div>
+        )} 
         {status.error && (
           <div>
             <h1 className="search-title">Weather Forecast</h1>
@@ -341,6 +347,11 @@ const WeatherApp = () => {
           </div>
         )}
       </div>
+      <div className="api-provider">
+        <a href="https://www.accuweather.com/"><p>Powered by AccuWeather</p></a>
+      </div>
+      <div className="footer"></div>
+    </React.Fragment>
   );
 };
 
