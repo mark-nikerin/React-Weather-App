@@ -14,10 +14,8 @@ function Forecast({ forecasts }) {
   const onDetailsOpen = (id) => {
     if (details.id && details.id === id) {
       setDetails({ id: -1, show: false, data: null });
-      console.log("hide details");
     } else {
       const data = forecasts[id-1];
-      console.log("open details for id " + id);
       setDetails({ id: id, show: true, data: data });
     }
   };
