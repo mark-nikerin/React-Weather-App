@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { positions, Provider as AlertProvider } from 'react-alert'
+import AlertMUITemplate from "react-alert-template-mui";
 import './index.css';
 import './normalize.css';
 import WeatherApp from './WeatherApp';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AlertProvider template={AlertMUITemplate} position={positions.MIDDLE}>
     <WeatherApp />
-  </React.StrictMode>,
+    </AlertProvider>,
   document.getElementById('root')
 );
 

@@ -1,5 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from "prop-types"; 
+import { useAlert } from "react-alert";
 import Search from "./components/Search";
 import Loader from "./components/Loader";
 import "./weatherApp.css";
@@ -20,6 +21,8 @@ const WeatherApp = () => {
   );
 
   const API_KEY = process.env.REACT_APP_YOUR_API_KEY_NAME;
+
+  const alert = useAlert();
 
   const [status, setStatus] = React.useState({
     isLoading: false,
@@ -150,10 +153,14 @@ const WeatherApp = () => {
           setStatus({ isLoading: false, error: false });
           getCurrentInfo(locationInfo.LocationKey);
         } else {
+          alert.show("Сity not found", {
+            title: "Not found"});
           setStatus({ isLoading: false, error: true });
         }
       })
       .catch(() => {
+        alert.show("Looks like the AccuWeather API limit has been reached", {
+          title: "Something is wrong"});
         setStatus({ isLoading: false, error: true });
       });
   };
@@ -193,8 +200,11 @@ const WeatherApp = () => {
         });
         if (result) {
           setCurrentInfo(result[0]);
+          setStatus({ isLoading: false, error: false });
           getDailyForecast(locationKey);
         } else {
+          alert.show("Forecast not found", {
+            title: "Not found"});
           setStatus({ isLoading: false, error: true });
         }
       })
@@ -257,6 +267,8 @@ const WeatherApp = () => {
           setDailyForecast(result);
           setStatus({ isLoading: false, error: false });
         } else {
+          alert.show("Forecast not found", {
+            title: "Not found"});
           setStatus({ isLoading: false, error: true });
         }
       })
@@ -279,40 +291,42 @@ const WeatherApp = () => {
   };
 
   return (
-    <div className="main">
-      {!status.error &&
-        (locationInfo.LocationKey && currentInfo ? (
-          <div>
-            {!status.isLoading && (
-              <div>
-                <React.Suspense fallback={<Loader />}>
-                  <Search
-                    className="search"
-                    onSearch={getLocationInfo}
-                    location={locationInfo.LocationName}
-                  />
-                  <CurrentInfo
-                    currentInfo={currentInfo}
-                    locationName={locationInfo.LocationName}
-                  />
-                  <Forecast forecasts={dailyForecast} />
-                </React.Suspense>
-              </div>
-            )}
-            {status.isLoading && <Loader />}
-          </div>
-        ) : (
+      <div className="main">
+        {!status.error &&
+          (locationInfo.LocationKey && currentInfo ? (
+            <div>
+              {!status.isLoading && (
+                <div>
+                  <React.Suspense fallback={<Loader />}>
+                    <Search
+                      className="search"
+                      onSearch={getLocationInfo}
+                      location={locationInfo.LocationName}
+                    />
+                    <CurrentInfo
+                      currentInfo={currentInfo}
+                      locationName={locationInfo.LocationName}
+                    />
+                    <Forecast forecasts={dailyForecast} />
+                  </React.Suspense>
+                </div>
+              )}
+              {status.isLoading && <Loader />}
+            </div>
+          ) : (
+            <div>
+              <h1 className="search-title">Weather Forecast</h1>
+              <Search className="search" onSearch={getLocationInfo} />
+              {status.isLoading && <Loader />}
+            </div>
+          ))}
+        {status.error && (
           <div>
             <h1 className="search-title">Weather Forecast</h1>
             <Search className="search" onSearch={getLocationInfo} />
           </div>
-        ))}
-      {status.error && (
-        <div>
-          <h1 className="search-title">Error</h1>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
   );
 };
 
