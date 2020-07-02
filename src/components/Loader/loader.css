@@ -17,9 +17,10 @@
   top: 3px;
   left: 37px;
   width: 5px;
-  height: 15px;
+  height: 16px;
   border-radius: 20%;
-  background: #8bbce7;
+  background: white;
+  border: 1px #333333;
 }
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);
@@ -74,6 +75,6 @@
     opacity: 1;
   }
   100% {
-    opacity: 0;
+    opacity: 0.8;
   }
 }
