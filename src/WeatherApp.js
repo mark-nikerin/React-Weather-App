@@ -347,7 +347,13 @@ const WeatherApp = () => {
             {status.isLoading && <Loader />}
           </div>
         )}
-        {(!status.isLoading || !status.error) && !currentInfo && (
+        {!status.isLoading && !status.error && !currentInfo && (
+          <div>
+            <h1 className="search-title">Weather Forecast</h1>
+            <Search className="search" onSearch={getLocationInfo} />
+          </div>
+        )}
+        {status.error && (
           <div>
             <h1 className="search-title">Weather Forecast</h1>
             <Search className="search" onSearch={getLocationInfo} />
