@@ -160,9 +160,12 @@ const WeatherApp = () => {
         }
       })
       .catch(() => {
-        alert.show("Looks like the AccuWeather API limit has been reached. \nDon’t be sad, come back tomorrow and try again!", {
-          title: "Something is wrong",
-        });
+        alert.show(
+          "Looks like the AccuWeather API limit has been reached. \nDon’t be sad, come back tomorrow and try again!",
+          {
+            title: "Something is wrong",
+          }
+        );
         setStatus({ isLoading: false, error: true });
       });
   };
@@ -212,6 +215,12 @@ const WeatherApp = () => {
         }
       })
       .catch(() => {
+        alert.show(
+          "Looks like the AccuWeather API limit has been reached. \nDon’t be sad, come back tomorrow and try again!",
+          {
+            title: "Something is wrong",
+          }
+        );
         setStatus({ isLoading: false, error: true });
       });
   };
@@ -291,6 +300,12 @@ const WeatherApp = () => {
         }
       })
       .catch(() => {
+        alert.show(
+          "Looks like the AccuWeather API limit has been reached. \nDon’t be sad, come back tomorrow and try again!",
+          {
+            title: "Something is wrong",
+          }
+        );
         setStatus({ isLoading: false, error: true });
       });
   };
@@ -310,7 +325,7 @@ const WeatherApp = () => {
 
   return (
     <React.Fragment>
-      <div className="main"> 
+      <div className="main">
         {!status.error && currentInfo && (
           <div>
             {!status.isLoading && (
@@ -335,12 +350,12 @@ const WeatherApp = () => {
         {(!status.isLoading || !status.error) && !currentInfo && (
           <div>
             <h1 className="search-title">Weather Forecast</h1>
-            <Search className="search" onSearch={getLocationInfo} /> 
+            <Search className="search" onSearch={getLocationInfo} />
           </div>
-        )}  
+        )}
       </div>
       <div className="footer"></div>
-      
+
       <div className="api-provider">
         <a href="https://www.accuweather.com/">Powered by AccuWeather</a>
       </div>

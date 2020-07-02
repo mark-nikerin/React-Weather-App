@@ -12,11 +12,11 @@ body {
   font-family: Montserrat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #DAE6F2; 
+  background-color: #dae6f2;
 }
 
 .footer {
-  position: fixed;   
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -30,34 +30,32 @@ body {
   z-index: -2;
 }
 
-.api-provider {  
-  position: fixed; 
+.api-provider {
+  position: fixed;
   align-items: center;
   left: 0;
   bottom: 0;
-  width: 100%; 
+  width: 100%;
   margin-top: 95vh;
-  margin-bottom: 20px; 
-  text-decoration: none;  
+  margin-bottom: 20px;
+  text-decoration: none;
   z-index: 0;
 }
 
-.api-provider a {   
+.api-provider a {
   display: flex;
   flex-direction: column;
   font-size: 12px;
   line-height: 15px;
-  text-decoration: none; 
-  text-align: center; 
-  color: white; 
+  text-decoration: none;
+  text-align: center;
+  color: white;
   font-size: 12px;
-  line-height: 15px; 
+  line-height: 15px;
   z-index: -1;
-} 
+}
 
 @font-face {
   font-family: "Montserrat";
   src: url("./assets/Montserrat-Regular.ttf") format("truetype");
 }
-
- 

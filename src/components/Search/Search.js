@@ -23,7 +23,7 @@ const Search = ({ onSearch, location }) => {
       onSearch(searchField.value());
       searchField.clear();
     }
-  }
+  };
 
   return (
     <form className="search" onSubmit={searchHandler}>
@@ -46,7 +46,7 @@ const Search = ({ onSearch, location }) => {
       </button>
     </form>
   );
-}
+};
 
 Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
