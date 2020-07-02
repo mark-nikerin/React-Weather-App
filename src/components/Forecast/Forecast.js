@@ -31,6 +31,7 @@ function Forecast({ forecasts }) {
               dayForecast={dayForecast}
               key={id}
               id={id+1}
+              isSelected = {id === details.id-1}
               onDetailsOpen={onDetailsOpen}
             />
           );
